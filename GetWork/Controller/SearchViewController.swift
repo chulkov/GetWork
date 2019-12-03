@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class ViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate{
+class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate{
     
     var jobs: [Job] = []
     
@@ -37,6 +37,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -71,10 +72,10 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDataSour
         }
         task.resume()
     }
-    
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-    }
+//    
+//    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+//        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+//    }
     
     
     // MARK: - Table view data source
