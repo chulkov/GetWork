@@ -12,7 +12,13 @@ import UIKit
 
 class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate{
     
-    var jobs: [Job] = []
+    var jobs = [Job](){
+        didSet{
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     @IBOutlet weak var settingsButton: UIButton! {
         didSet{
@@ -37,42 +43,30 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+       // getData(text: "")
         
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("searchBarTextDidEndEditing     -     \(searchBar.text ?? "empty")")
         if let text = searchBar.text{
-            getData(text: text)
-        }
-        
-    }
-    
-    func getData(text: String){
-        
-        guard let url = URL(string: "https://jobs.github.com/positions.json?search=\(text)&page=0") else {return}
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let dataResponse = data,
-                error == nil else {
-                    print(error?.localizedDescription ?? "Response Error")
-                    return }
-            do {
-                //here dataResponse received from a network request
-                let decoder = JSONDecoder()
-                self.jobs = try decoder.decode([Job].self, from: dataResponse) //Decode JSON Response Data
-                // print(jobs)
-                OperationQueue.main.addOperation {
-                    self.tableView.reloadData()
+            //getData(text: text)
+            
+            let jobRequest = NetworkRequest(text: text, page: 0)
+            jobRequest.getJobs(compleation: { [weak self] result in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let jobs):
+                    self?.jobs = jobs
                 }
-                
-                
-            } catch let parsingError {
-                print("Error", parsingError)
-            }
+            })
+            
+            
         }
-        task.resume()
+        
     }
-//    
+
 //    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
 //        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
 //    }
