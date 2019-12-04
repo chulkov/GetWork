@@ -81,13 +81,19 @@
                                 <rect key="frame" x="0.0" y="144" width="414" height="669"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="JobCell" id="1JJ-7f-feL">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="JobCell" id="1JJ-7f-feL" customClass="JobTableViewCell" customModule="GetWork" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1JJ-7f-feL" id="9tl-pu-vCz">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" selected="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <segue destination="fiG-fR-naH" kind="show" identifier="toDetailedJobSegue" id="djI-Eo-hcN"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -101,7 +107,7 @@
                                 <inset key="imageEdgeInsets" minX="13" minY="8" maxX="13" maxY="8"/>
                                 <state key="normal" image="settings"/>
                                 <connections>
-                                    <segue destination="9PQ-Jc-Sif" kind="show" id="Otk-ll-RlI"/>
+                                    <segue destination="9PQ-Jc-Sif" kind="show" identifier="SearchDetailSegue" id="Otk-ll-RlI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -137,6 +143,35 @@
             </objects>
             <point key="canvasLocation" x="368.11594202898556" y="1034.5982142857142"/>
         </scene>
+        <!--Detail Job View Controller-->
+        <scene sceneID="KGH-QI-SMf">
+            <objects>
+                <viewController id="fiG-fR-naH" customClass="DetailJobViewController" customModule="GetWork" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Tl-Ut-0Aj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WAA-UL-lHt">
+                                <rect key="frame" x="87" y="151" width="240" height="128"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KbN-Yp-DSQ" firstAttribute="trailing" secondItem="WAA-UL-lHt" secondAttribute="trailing" constant="87" id="4k7-ty-kzi"/>
+                            <constraint firstItem="WAA-UL-lHt" firstAttribute="leading" secondItem="KbN-Yp-DSQ" secondAttribute="leading" constant="87" id="Mke-I1-S0g"/>
+                            <constraint firstItem="WAA-UL-lHt" firstAttribute="top" secondItem="KbN-Yp-DSQ" secondAttribute="top" constant="63" id="SBb-Jq-K1v"/>
+                            <constraint firstItem="KbN-Yp-DSQ" firstAttribute="bottom" secondItem="WAA-UL-lHt" secondAttribute="bottom" constant="534" id="bOA-8A-ybn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KbN-Yp-DSQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="logoImage" destination="WAA-UL-lHt" id="Qwd-0g-NK2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qx6-me-Zeu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1490" y="1274"/>
+        </scene>
         <!--Все параметры-->
         <scene sceneID="BAJ-8w-fF0">
             <objects>
@@ -151,7 +186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fpr-Fa-FAg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1212" y="1035"/>
+            <point key="canvasLocation" x="1452" y="586"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UyD-SH-7Fv">

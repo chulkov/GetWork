@@ -20,17 +20,12 @@ struct NetworkRequest {
     //var page: Int
     
     init(text: String, page: Int) {
-        //self.text = text
-       // self.page = page
-        
         let destinationURL = "https://jobs.github.com/positions.json?search=\(text)&page=\(page)"
-        
-        guard let resourceURL = URL(string: destinationURL) else {fatalError()}
-        
+        let urlString = destinationURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        guard let resourceURL = URL(string: urlString!) else {fatalError()}
         self.resourceURL = resourceURL
-        
+        print("\(resourceURL)")
     }
-    
     
     func getJobs (compleation: @escaping(Result<[Job], HolidayError>) ->Void) {
         let dataTask = URLSession.shared.dataTask(with: resourceURL) { data, _, _ in
@@ -39,7 +34,7 @@ struct NetworkRequest {
                 compleation(.failure(.noDataAvailable))
                 return
             }
-            
+
             do{
                 let decoder = JSONDecoder()
                 let jobs = try decoder.decode([Job].self, from: jsonData)
@@ -51,4 +46,5 @@ struct NetworkRequest {
         }
         dataTask.resume()
     }
+
 }

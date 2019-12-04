@@ -26,7 +26,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
             settingsButton.layer.borderWidth = 1
             settingsButton.layer.borderColor = #colorLiteral(red: 0.9499533772, green: 0.9500743747, blue: 0.9531216025, alpha: 1)
         }
-       
+        
     }
     @IBOutlet weak var searchBar: UISearchBar! {
         didSet{
@@ -40,10 +40,28 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         }
     }
     
+    var fetchingMore = false
+    var currentPage = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-       // getData(text: "")
+        // getData(text: "")
+        
+        tableView.estimatedRowHeight = 68.0
+        tableView.rowHeight = UITableView.automaticDimension
+        
+        registerTableViewCells()
+        
+        NetworkRequest(text: "", page: 0).getJobs(compleation: { [weak self] result in
+            
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let jobs):
+                self?.jobs = jobs
+            }
+        })
         
     }
     
@@ -51,26 +69,21 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         print("searchBarTextDidEndEditing     -     \(searchBar.text ?? "empty")")
         if let text = searchBar.text{
             //getData(text: text)
-            
-            let jobRequest = NetworkRequest(text: text, page: 0)
-            jobRequest.getJobs(compleation: { [weak self] result in
+            currentPage = 0
+            NetworkRequest(text: text, page: 0).getJobs(compleation: { [weak self] result in
+                
                 switch result {
                 case .failure(let error):
                     print(error)
                 case .success(let jobs):
                     self?.jobs = jobs
+                    self?.currentPage += 1
                 }
             })
-            
             
         }
         
     }
-
-//    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-//        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-//    }
-    
     
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -80,22 +93,82 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         return jobs.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "JobCell", for: indexPath)
         
-        
-//        if let url = jobs[indexPath.row].companyLogo {
-//            getData(from: URL(string: url)!) { data, response, error in
-//                guard let data = data, error == nil else { return }
-//                DispatchQueue.main.async() {
-//                    cell.imageView?.image = UIImage(data: data)
-//                }
-//            }
-//        }
-//        
-        
-        cell.textLabel?.text = jobs[indexPath.row].title
-        
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "JobTableViewCell") as? JobTableViewCell{
+            cell.titleLabel.text = jobs[indexPath.row].title
+            cell.companyLabel.text = jobs[indexPath.row].company
+            cell.cityLabel.text = jobs[indexPath.row].location
+            //cell.dateLabel.text = jobs[indexPath.row].createdAt
+            cell.setDescription(textDescription: jobs[indexPath.row].description, trim: 350)
+            cell.setDate(date: jobs[indexPath.row].createdAt)
+            return cell
+        }
+        return UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func registerTableViewCells(){
+        let customCell = UINib(nibName: "JobTableViewCell", bundle: nil)
+        self.tableView.register(customCell, forCellReuseIdentifier: "JobTableViewCell")
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        
+        
+        if offsetY > contentHeight - scrollView.frame.height {
+            
+            if !fetchingMore{
+                if let text = searchBar.text{
+                    beginBatchFetch(text: text, page: currentPage)
+                }else{
+                    print("searchbar text is empty somehow")
+                }
+                
+            }
+        }
+    }
+    
+    func beginBatchFetch(text: String, page: Int){
+        fetchingMore = true
+        
+        NetworkRequest(text: text, page: page).getJobs(compleation: { [weak self] result in
+            
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let jobs):
+                self?.fetchingMore = false
+                if jobs.isEmpty == false{
+                    self?.jobs.append(contentsOf: jobs)
+                    self?.currentPage += 1
+                }else{
+                    print("No more jobs for you")
+                    
+                }
+                
+            }
+        })
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toDetailedJobSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if  segue.identifier == "toDetailedJobSegue",
+            let destination = segue.destination as? DetailJobViewController,
+            let blogIndex = tableView.indexPathForSelectedRow?.row
+        {
+            destination.imageURL = jobs[blogIndex].companyLogo ?? ""
+        }
+    }
+    
+    
 }
 

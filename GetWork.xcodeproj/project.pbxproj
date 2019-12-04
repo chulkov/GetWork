@@ -13,6 +13,9 @@
 		50697F812394E8FA00364BDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50697F802394E8FA00364BDB /* Assets.xcassets */; };
 		50697F842394E8FA00364BDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50697F822394E8FA00364BDB /* LaunchScreen.storyboard */; };
 		50697F8F2395268000364BDB /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50697F8E2395268000364BDB /* Job.swift */; };
+		507B684823979C550026F732 /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507B684623979C550026F732 /* JobTableViewCell.swift */; };
+		507B684923979C550026F732 /* JobTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 507B684723979C550026F732 /* JobTableViewCell.xib */; };
+		507B684B2397DA770026F732 /* DetailJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507B684A2397DA770026F732 /* DetailJobViewController.swift */; };
 		50FE4CB7239683EA00CD15F2 /* SearchSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FE4CB6239683EA00CD15F2 /* SearchSettingsViewController.swift */; };
 		50FE4CDB2396D96A00CD15F2 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FE4CDA2396D96A00CD15F2 /* NetworkRequest.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +29,9 @@
 		50697F832394E8FA00364BDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50697F852394E8FA00364BDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50697F8E2395268000364BDB /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		507B684623979C550026F732 /* JobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
+		507B684723979C550026F732 /* JobTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JobTableViewCell.xib; sourceTree = "<group>"; };
+		507B684A2397DA770026F732 /* DetailJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailJobViewController.swift; sourceTree = "<group>"; };
 		50FE4CB6239683EA00CD15F2 /* SearchSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsViewController.swift; sourceTree = "<group>"; };
 		50FE4CDA2396D96A00CD15F2 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,7 +71,6 @@
 				50FE4CB52396839F00CD15F2 /* View */,
 				50697F8D2394ED9C00364BDB /* Model */,
 				50697F8B2394E91600364BDB /* Supporting FIles */,
-				50697F7D2394E8F900364BDB /* Main.storyboard */,
 				50697F802394E8FA00364BDB /* Assets.xcassets */,
 				50697F852394E8FA00364BDB /* Info.plist */,
 			);
@@ -94,6 +99,7 @@
 			children = (
 				50697F7B2394E8F900364BDB /* SearchViewController.swift */,
 				50FE4CB6239683EA00CD15F2 /* SearchSettingsViewController.swift */,
+				507B684A2397DA770026F732 /* DetailJobViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -101,6 +107,9 @@
 		50FE4CB52396839F00CD15F2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				507B684623979C550026F732 /* JobTableViewCell.swift */,
+				507B684723979C550026F732 /* JobTableViewCell.xib */,
+				50697F7D2394E8F900364BDB /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -174,6 +183,7 @@
 				50697F842394E8FA00364BDB /* LaunchScreen.storyboard in Resources */,
 				50697F812394E8FA00364BDB /* Assets.xcassets in Resources */,
 				50697F7F2394E8F900364BDB /* Main.storyboard in Resources */,
+				507B684923979C550026F732 /* JobTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +197,8 @@
 				50697F7C2394E8F900364BDB /* SearchViewController.swift in Sources */,
 				50697F8F2395268000364BDB /* Job.swift in Sources */,
 				50697F7A2394E8F900364BDB /* AppDelegate.swift in Sources */,
+				507B684B2397DA770026F732 /* DetailJobViewController.swift in Sources */,
+				507B684823979C550026F732 /* JobTableViewCell.swift in Sources */,
 				50FE4CB7239683EA00CD15F2 /* SearchSettingsViewController.swift in Sources */,
 				50FE4CDB2396D96A00CD15F2 /* NetworkRequest.swift in Sources */,
 			);

@@ -17,6 +17,7 @@ struct Job: Decodable{
     var company: String
     var description: String
     var companyLogo: String?
+    var location: String
     
     enum CodingKeys: String, CodingKey {
         case title
@@ -27,6 +28,7 @@ struct Job: Decodable{
         case company
         case description
         case companyLogo = "company_logo"
+        case location
     }
     
     

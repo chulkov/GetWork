@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="JobTableViewCell" customModule="GetWork" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="179.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title of the vacancy" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFY-1Z-y0B">
+                        <rect key="frame" x="16" y="4" width="156" height="20.5"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wc1-mk-k0O">
+                        <rect key="frame" x="16" y="25.5" width="69" height="18"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCn-8f-9eE">
+                        <rect key="frame" x="16" y="44.5" width="107" height="18"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Hq-bF-YEH">
+                        <rect key="frame" x="15" y="65.5" width="265" height="77"/>
+                        <string key="text">Key Responsibilities:Leads development efforts in an Agile development environment, daily stand ups, sprint planning, backlog grooming, retrospectives, and sprint demos.lmplements web designs that are asynchronous, responsive and provide a rich user experience.</string>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="November 28" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64m-Rh-ezZ">
+                        <rect key="frame" x="16" y="158.5" width="82" height="16"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egA-Ke-ANU">
+                        <rect key="frame" x="279" y="0.0" width="30" height="30"/>
+                        <state key="normal" title="★">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebs-nq-CnZ">
+                        <rect key="frame" x="274" y="146.5" width="35" height="28"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                        <state key="normal" title="Apply"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="64m-Rh-ezZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="2bc-mf-jLx"/>
+                    <constraint firstItem="RFY-1Z-y0B" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="2u3-20-aST"/>
+                    <constraint firstItem="NCn-8f-9eE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="5bk-JP-fDR"/>
+                    <constraint firstAttribute="trailing" secondItem="egA-Ke-ANU" secondAttribute="trailing" constant="11" id="Csk-ay-Cd2"/>
+                    <constraint firstItem="RFY-1Z-y0B" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="Dfl-Ng-QIw"/>
+                    <constraint firstItem="wc1-mk-k0O" firstAttribute="top" secondItem="RFY-1Z-y0B" secondAttribute="bottom" constant="1" id="I46-sZ-ub0"/>
+                    <constraint firstItem="1Hq-bF-YEH" firstAttribute="top" secondItem="NCn-8f-9eE" secondAttribute="bottom" constant="3" id="UXV-t8-mWq"/>
+                    <constraint firstAttribute="bottom" secondItem="64m-Rh-ezZ" secondAttribute="bottom" constant="5" id="VpI-JD-azf"/>
+                    <constraint firstItem="egA-Ke-ANU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZBX-t3-HjU"/>
+                    <constraint firstItem="NCn-8f-9eE" firstAttribute="top" secondItem="wc1-mk-k0O" secondAttribute="bottom" constant="1" id="d7q-VI-hCg"/>
+                    <constraint firstAttribute="trailing" secondItem="1Hq-bF-YEH" secondAttribute="trailing" constant="40" id="dKr-2a-3PY"/>
+                    <constraint firstAttribute="trailing" secondItem="ebs-nq-CnZ" secondAttribute="trailing" constant="11" id="dsT-ke-AEi"/>
+                    <constraint firstAttribute="bottom" secondItem="ebs-nq-CnZ" secondAttribute="bottom" constant="5" id="iKa-hh-ugI"/>
+                    <constraint firstItem="wc1-mk-k0O" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="iKj-ik-MsI"/>
+                    <constraint firstItem="64m-Rh-ezZ" firstAttribute="top" secondItem="1Hq-bF-YEH" secondAttribute="bottom" constant="16" id="sh2-cr-a13"/>
+                    <constraint firstItem="1Hq-bF-YEH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ubK-gf-aAq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="applyButton" destination="ebs-nq-CnZ" id="5a7-tS-pZZ"/>
+                <outlet property="cityLabel" destination="wc1-mk-k0O" id="dkZ-qc-rOg"/>
+                <outlet property="companyLabel" destination="NCn-8f-9eE" id="1Zc-7e-Ab4"/>
+                <outlet property="dateLabel" destination="64m-Rh-ezZ" id="Ci0-dA-OGp"/>
+                <outlet property="descriptionLabel" destination="1Hq-bF-YEH" id="api-eH-l0n"/>
+                <outlet property="favoriteButton" destination="egA-Ke-ANU" id="TDD-5L-WBw"/>
+                <outlet property="titleLabel" destination="RFY-1Z-y0B" id="ICh-QQ-i56"/>
+            </connections>
+            <point key="canvasLocation" x="34.782608695652179" y="34.821428571428569"/>
+        </tableViewCell>
+    </objects>
+</document>
