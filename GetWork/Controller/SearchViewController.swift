@@ -158,14 +158,22 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "toDetailedJobSegue", sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if  segue.identifier == "toDetailedJobSegue",
-            let destination = segue.destination as? DetailJobViewController,
-            let blogIndex = tableView.indexPathForSelectedRow?.row
-        {
-            destination.imageURL = jobs[blogIndex].companyLogo ?? ""
+        if segue.identifier == "toDetailedJobSegue"  {
+            
+            if let navController = segue.destination as? UINavigationController {
+                
+                if let chidVC = navController.topViewController as? DetailJobViewController {
+                    let blogIndex = tableView.indexPathForSelectedRow?.row
+                    chidVC.imageURL = jobs[blogIndex!].companyLogo ?? ""
+                    
+                }
+                
+            }
+            
         }
     }
     

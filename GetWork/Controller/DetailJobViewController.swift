@@ -19,16 +19,19 @@ class DetailJobViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        let url = URL(string: imageURL!)
-
-        DispatchQueue.global().async {
-            if let data = try? Data(contentsOf: url!){
-                DispatchQueue.main.async {
-                    self.logoImage.image = UIImage(data: data)
-                }
-            } //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-
+        
+        if let url = URL(string: imageURL!){
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: url){
+                    DispatchQueue.main.async {
+                        self.logoImage.image = UIImage(data: data)
+                    }
+                } //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                
+            }
         }
+
+       
     }
     
     override func viewWillLayoutSubviews() {
@@ -39,7 +42,12 @@ class DetailJobViewController: UIViewController {
 //        }
     }
     
-
+    @IBAction func goBack(_ sender: UIBarButtonItem) {
+      //self.navigationController?.popViewController(animated: true)
+       // navigationController?.popToRootViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
