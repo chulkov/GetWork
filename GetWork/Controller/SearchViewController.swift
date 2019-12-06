@@ -53,15 +53,24 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         
         registerTableViewCells()
         
-        NetworkRequest(text: "", page: 0).getJobs(compleation: { [weak self] result in
-            
+//        NetworkRequest().getJobsWithSearch(text: "", page: 0) { result in
+//            switch result {
+//            case .failure(let error):
+//                print(error)
+//            case .success(let jobs):
+//                self.jobs = jobs
+//            }
+//        }
+        NetworkRequest().getJobs { (result) in
             switch result {
             case .failure(let error):
                 print(error)
             case .success(let jobs):
-                self?.jobs = jobs
+                self.jobs = jobs
             }
-        })
+        }
+        
+        
         
     }
     
@@ -70,16 +79,14 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         if let text = searchBar.text{
             //getData(text: text)
             currentPage = 0
-            NetworkRequest(text: text, page: 0).getJobs(compleation: { [weak self] result in
-                
+            NetworkRequest().getJobsWithSearch(text: text, page: 0) { result in
                 switch result {
                 case .failure(let error):
                     print(error)
                 case .success(let jobs):
-                    self?.jobs = jobs
-                    self?.currentPage += 1
+                    self.jobs = jobs
                 }
-            })
+            }
             
         }
         
@@ -136,23 +143,39 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     func beginBatchFetch(text: String, page: Int){
         fetchingMore = true
         
-        NetworkRequest(text: text, page: page).getJobs(compleation: { [weak self] result in
-            
+//        NetworkRequest(text: text, page: page).getJobs(compleation: { [weak self] result in
+//
+//            switch result {
+//            case .failure(let error):
+//                print(error)
+//            case .success(let jobs):
+//                self?.fetchingMore = false
+//                if jobs.isEmpty == false{
+//                    self?.jobs.append(contentsOf: jobs)
+//                    self?.currentPage += 1
+//                }else{
+//                    print("No more jobs for you")
+//
+//                }
+//
+//            }
+//        })
+        
+        NetworkRequest().getJobsWithSearch(text: text, page: page) { result in
             switch result {
             case .failure(let error):
                 print(error)
             case .success(let jobs):
-                self?.fetchingMore = false
+                self.fetchingMore = false
                 if jobs.isEmpty == false{
-                    self?.jobs.append(contentsOf: jobs)
-                    self?.currentPage += 1
+                    self.jobs.append(contentsOf: jobs)
+                    self.currentPage += 1
                 }else{
                     print("No more jobs for you")
                     
                 }
-                
             }
-        })
+        }
         
     }
     

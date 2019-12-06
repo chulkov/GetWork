@@ -15,19 +15,29 @@ enum HolidayError: Error{
 
 struct NetworkRequest {
     
-    var resourceURL: URL
+    
+    let baseURL = "https://jobs.github.com/positions.json"
+    
+    
+
    // var text: String
     //var page: Int
     
-    init(text: String, page: Int) {
-        let destinationURL = "https://jobs.github.com/positions.json?search=\(text)&page=\(page)"
+    init() {
+        
+    }
+
+    
+    func getJobsWithSearch (text:String, page: Int, compleation: @escaping(Result<[Job], HolidayError>) ->Void) {
+        
+        let destinationURL = baseURL + "?search=\(text)&page=\(page)"
         let urlString = destinationURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         guard let resourceURL = URL(string: urlString!) else {fatalError()}
-        self.resourceURL = resourceURL
+        //self.resourceURL = resourceURL
         print("\(resourceURL)")
-    }
-    
-    func getJobs (compleation: @escaping(Result<[Job], HolidayError>) ->Void) {
+        
+        
+        
         let dataTask = URLSession.shared.dataTask(with: resourceURL) { data, _, _ in
             
             guard let jsonData = data else {
@@ -35,6 +45,34 @@ struct NetworkRequest {
                 return
             }
 
+            do{
+                let decoder = JSONDecoder()
+                let jobs = try decoder.decode([Job].self, from: jsonData)
+                compleation(.success(jobs))
+            }catch{
+                compleation(.failure(.canNotProcessData))
+            }
+            
+        }
+        dataTask.resume()
+    }
+    func getJobs( compleation: @escaping(Result<[Job], HolidayError>) ->Void) {
+        
+        let destinationURL = baseURL
+        let urlString = destinationURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        guard let resourceURL = URL(string: urlString!) else {fatalError()}
+        //self.resourceURL = resourceURL
+        print("\(resourceURL)")
+        
+        
+        
+        let dataTask = URLSession.shared.dataTask(with: resourceURL) { data, _, _ in
+            
+            guard let jsonData = data else {
+                compleation(.failure(.noDataAvailable))
+                return
+            }
+            
             do{
                 let decoder = JSONDecoder()
                 let jobs = try decoder.decode([Job].self, from: jsonData)
