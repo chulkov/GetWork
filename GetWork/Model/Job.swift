@@ -129,19 +129,19 @@ struct Phone: Codable {
 
 // MARK: - TypeClass
 struct TypeClass: Codable {
-    let id: ID
-    let name: Name
+    let id: String
+    let name: String
 }
 
-enum ID: String, Codable {
-    case bil4934Beel = "bil-4934-beel"
-    case idOpen = "open"
-}
-
-enum Name: String, Codable {
-    case билайн = "Билайн"
-    case открытая = "Открытая"
-}
+//enum ID: String, Codable {
+//    case bil4934Beel = "bil-4934-beel"
+//    case idOpen = "open"
+//}
+//
+//enum Name: String, Codable {
+//    case билайн = "Билайн"
+//    case открытая = "Открытая"
+//}
 
 // MARK: - Employer
 struct Employer: Codable {
@@ -174,7 +174,7 @@ struct LogoUrls: Codable {
 
 // MARK: - Salary
 struct Salary: Codable {
-    let from: Int
+    let from: Int?
     let to: Int?
     let currency: Currency
     let gross: Bool

@@ -30,7 +30,7 @@ struct NetworkRequest {
     
     func getJobsWithSearch (text:String, page: Int, compleation: @escaping(Result<Job, HolidayError>) ->Void) {
         
-        let destinationURL = baseURL + "?search=\(text)&page=\(page)"
+        let destinationURL = baseURL + "vacancies?text=\(text)&page=\(page)"
         let urlString = destinationURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         guard let resourceURL = URL(string: urlString!) else {fatalError()}
         //self.resourceURL = resourceURL
@@ -50,6 +50,7 @@ struct NetworkRequest {
                 let jobs = try decoder.decode(Job.self, from: jsonData)
                 compleation(.success(jobs))
             }catch{
+                print(error.localizedDescription)
                 compleation(.failure(.canNotProcessData))
             }
             
@@ -76,7 +77,6 @@ struct NetworkRequest {
             do{
                 let decoder = JSONDecoder()
                 let jobs = try decoder.decode(Job.self, from: jsonData)
-//                let arrayOfJobs: [Job] = [jobs]
                 compleation(.success(jobs))
             }catch{
                 print(error.localizedDescription)

@@ -13,7 +13,7 @@ class JobTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var companyLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak private var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak private var dateLabel: UILabel!
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
@@ -34,9 +34,12 @@ class JobTableViewCell: UITableViewCell {
     
     func setDate(date dateUnformatted: String){
         //let dateString = "Thu, 22 Oct 2015 07:45:17 +0000"
-        let dateString = dateUnformatted.replacingOccurrences(of: "UTC ", with: "")
+       // 2019-11-25T09:59:39+0300
+        let dateString = dateUnformatted.replacingOccurrences(of: "T", with: " ")
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEE MMM dd HH:mm:ss yyyy"
+        dateFormatter.dateFormat = "yyyy-mm-dd HH:mm:ss+zzzz"
+        //dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss +zzzz"
+        
         dateFormatter.locale = Locale.init(identifier: "en_GB")
         
         let dateObj = dateFormatter.date(from: dateString)

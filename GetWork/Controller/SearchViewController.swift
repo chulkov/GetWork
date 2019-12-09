@@ -45,55 +45,38 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        // getData(text: "")
-        
         tableView.estimatedRowHeight = 68.0
         tableView.rowHeight = UITableView.automaticDimension
-        
         registerTableViewCells()
-        
-//        NetworkRequest().getJobsWithSearch(text: "", page: 0) { result in
-//            switch result {
-//            case .failure(let error):
-//                print(error)
-//            case .success(let jobs):
-//                self.jobs = jobs
-//            }
-//        }
+
         NetworkRequest().getJobs { (result) in
             switch result {
             case .failure(let error):
                 print(error)
             case .success(let jobs):
                 self.jobs = jobs
-                //let test = jobs
-                //let arrayOfJobs: [Job] = [jobs]
-                //self.jobs = arrayOfJobs
             }
         }
         
-        
-        
     }
     
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        print("searchBarTextDidEndEditing     -     \(searchBar.text ?? "empty")")
-//        if let text = searchBar.text{
-//            //getData(text: text)
-//            currentPage = 0
-//            NetworkRequest().getJobsWithSearch(text: text, page: 0) { result in
-//                switch result {
-//                case .failure(let error):
-//                    print(error)
-//                case .success(let jobs):
-//                    self.jobs = jobs
-//                }
-//            }
-//
-//        }
-//
-//    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("searchBarTextDidEndEditing     -     \(searchBar.text ?? "empty")")
+        if let text = searchBar.text{
+            //getData(text: text)
+            currentPage = 0
+            NetworkRequest().getJobsWithSearch(text: text, page: 0) { result in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let jobs):
+                    self.jobs = jobs
+                }
+            }
+
+        }
+
+    }
     
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -108,9 +91,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
             cell.titleLabel.text = jobs?.items[indexPath.row].name
             cell.companyLabel.text = jobs?.items[indexPath.row].employer.name
             cell.cityLabel.text = jobs?.items[indexPath.row].address?.city
-//            //cell.dateLabel.text = jobs[indexPath.row].createdAt
-//            cell.setDescription(textDescription: jobs[indexPath.row].description, trim: 350)
-//            cell.setDate(date: jobs[indexPath.row].createdAt)
+            cell.descriptionLabel.text = jobs?.items[indexPath.row].snippet.requirement
+            cell.setDate(date: jobs?.items[indexPath.row].publishedAt ?? "2019-11-25T09:59:39+0300")
             return cell
         }
         return UITableViewCell()
@@ -194,7 +176,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                 
                 if let chidVC = navController.topViewController as? DetailJobViewController {
                     let blogIndex = tableView.indexPathForSelectedRow?.row
-                   // chidVC.imageURL = jobs[blogIndex!].companyLogo ?? ""
+                    chidVC.imageURL = jobs?.items[blogIndex!].employer.logoUrls?.original
                     
                 }
                 
