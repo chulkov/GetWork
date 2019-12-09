@@ -12,7 +12,7 @@ import UIKit
 
 class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate{
     
-    var jobs = [Job](){
+    var jobs = Job(){
         didSet{
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -67,6 +67,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                 print(error)
             case .success(let jobs):
                 self.jobs = jobs
+                //let test = jobs
+                //let arrayOfJobs: [Job] = [jobs]
+                //self.jobs = arrayOfJobs
             }
         }
         
@@ -74,40 +77,40 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("searchBarTextDidEndEditing     -     \(searchBar.text ?? "empty")")
-        if let text = searchBar.text{
-            //getData(text: text)
-            currentPage = 0
-            NetworkRequest().getJobsWithSearch(text: text, page: 0) { result in
-                switch result {
-                case .failure(let error):
-                    print(error)
-                case .success(let jobs):
-                    self.jobs = jobs
-                }
-            }
-            
-        }
-        
-    }
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        print("searchBarTextDidEndEditing     -     \(searchBar.text ?? "empty")")
+//        if let text = searchBar.text{
+//            //getData(text: text)
+//            currentPage = 0
+//            NetworkRequest().getJobsWithSearch(text: text, page: 0) { result in
+//                switch result {
+//                case .failure(let error):
+//                    print(error)
+//                case .success(let jobs):
+//                    self.jobs = jobs
+//                }
+//            }
+//
+//        }
+//
+//    }
     
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return jobs.count
+        return jobs?.items.count ?? 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "JobTableViewCell") as? JobTableViewCell{
-            cell.titleLabel.text = jobs[indexPath.row].title
-            cell.companyLabel.text = jobs[indexPath.row].company
-            cell.cityLabel.text = jobs[indexPath.row].location
-            //cell.dateLabel.text = jobs[indexPath.row].createdAt
-            cell.setDescription(textDescription: jobs[indexPath.row].description, trim: 350)
-            cell.setDate(date: jobs[indexPath.row].createdAt)
+            cell.titleLabel.text = jobs?.items[indexPath.row].name
+            cell.companyLabel.text = jobs?.items[indexPath.row].employer.name
+            cell.cityLabel.text = jobs?.items[indexPath.row].address?.city
+//            //cell.dateLabel.text = jobs[indexPath.row].createdAt
+//            cell.setDescription(textDescription: jobs[indexPath.row].description, trim: 350)
+//            cell.setDate(date: jobs[indexPath.row].createdAt)
             return cell
         }
         return UITableViewCell()
@@ -161,21 +164,21 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
 //            }
 //        })
         
-        NetworkRequest().getJobsWithSearch(text: text, page: page) { result in
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let jobs):
-                self.fetchingMore = false
-                if jobs.isEmpty == false{
-                    self.jobs.append(contentsOf: jobs)
-                    self.currentPage += 1
-                }else{
-                    print("No more jobs for you")
-                    
-                }
-            }
-        }
+//        NetworkRequest().getJobsWithSearch(text: text, page: page) { result in
+//            switch result {
+//            case .failure(let error):
+//                print(error)
+//            case .success(let jobs):
+//                self.fetchingMore = false
+//                if jobs.isEmpty == false{
+//                    self.jobs.append(contentsOf: jobs)
+//                    self.currentPage += 1
+//                }else{
+//                    print("No more jobs for you")
+//
+//                }
+//            }
+//        }
         
     }
     
@@ -191,7 +194,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                 
                 if let chidVC = navController.topViewController as? DetailJobViewController {
                     let blogIndex = tableView.indexPathForSelectedRow?.row
-                    chidVC.imageURL = jobs[blogIndex!].companyLogo ?? ""
+                   // chidVC.imageURL = jobs[blogIndex!].companyLogo ?? ""
                     
                 }
                 

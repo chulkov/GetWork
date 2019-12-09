@@ -16,9 +16,9 @@ enum HolidayError: Error{
 struct NetworkRequest {
     
     
-    let baseURL = "https://jobs.github.com/positions.json"
+    //let baseURL = "https://jobs.github.com/positions.json"
     
-    
+    let baseURL = "https://api.hh.ru/"
 
    // var text: String
     //var page: Int
@@ -28,7 +28,7 @@ struct NetworkRequest {
     }
 
     
-    func getJobsWithSearch (text:String, page: Int, compleation: @escaping(Result<[Job], HolidayError>) ->Void) {
+    func getJobsWithSearch (text:String, page: Int, compleation: @escaping(Result<Job, HolidayError>) ->Void) {
         
         let destinationURL = baseURL + "?search=\(text)&page=\(page)"
         let urlString = destinationURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
@@ -47,7 +47,7 @@ struct NetworkRequest {
 
             do{
                 let decoder = JSONDecoder()
-                let jobs = try decoder.decode([Job].self, from: jsonData)
+                let jobs = try decoder.decode(Job.self, from: jsonData)
                 compleation(.success(jobs))
             }catch{
                 compleation(.failure(.canNotProcessData))
@@ -56,9 +56,9 @@ struct NetworkRequest {
         }
         dataTask.resume()
     }
-    func getJobs( compleation: @escaping(Result<[Job], HolidayError>) ->Void) {
+    func getJobs( compleation: @escaping(Result<Job, HolidayError>) ->Void) {
         
-        let destinationURL = baseURL
+        let destinationURL = baseURL + "vacancies"
         let urlString = destinationURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         guard let resourceURL = URL(string: urlString!) else {fatalError()}
         //self.resourceURL = resourceURL
@@ -66,8 +66,8 @@ struct NetworkRequest {
         
         
         
-        let dataTask = URLSession.shared.dataTask(with: resourceURL) { data, _, _ in
-            
+        let dataTask = URLSession.shared.dataTask(with: resourceURL) { data, response, error in
+            //print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue))
             guard let jsonData = data else {
                 compleation(.failure(.noDataAvailable))
                 return
@@ -75,10 +75,11 @@ struct NetworkRequest {
             
             do{
                 let decoder = JSONDecoder()
-                let jobs = try decoder.decode([Job].self, from: jsonData)
+                let jobs = try decoder.decode(Job.self, from: jsonData)
+//                let arrayOfJobs: [Job] = [jobs]
                 compleation(.success(jobs))
             }catch{
-                compleation(.failure(.canNotProcessData))
+                print(error.localizedDescription)
             }
             
         }
