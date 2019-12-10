@@ -16,6 +16,12 @@
 		507B684823979C550026F732 /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507B684623979C550026F732 /* JobTableViewCell.swift */; };
 		507B684923979C550026F732 /* JobTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 507B684723979C550026F732 /* JobTableViewCell.xib */; };
 		507B684B2397DA770026F732 /* DetailJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507B684A2397DA770026F732 /* DetailJobViewController.swift */; };
+		50AE2323239F8C0200FC4D87 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE2321239F8C0200FC4D87 /* DescriptionTableViewCell.swift */; };
+		50AE2324239F8C0200FC4D87 /* DescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50AE2322239F8C0200FC4D87 /* DescriptionTableViewCell.xib */; };
+		50AE2327239F973B00FC4D87 /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE2325239F973B00FC4D87 /* CompanyCell.swift */; };
+		50AE2328239F973B00FC4D87 /* CompanyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50AE2326239F973B00FC4D87 /* CompanyCell.xib */; };
+		50AE232B239F9CE200FC4D87 /* AdressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE2329239F9CE200FC4D87 /* AdressCell.swift */; };
+		50AE232C239F9CE200FC4D87 /* AdressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50AE232A239F9CE200FC4D87 /* AdressCell.xib */; };
 		50FE4CB7239683EA00CD15F2 /* SearchSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FE4CB6239683EA00CD15F2 /* SearchSettingsViewController.swift */; };
 		50FE4CDB2396D96A00CD15F2 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FE4CDA2396D96A00CD15F2 /* NetworkRequest.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +38,12 @@
 		507B684623979C550026F732 /* JobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
 		507B684723979C550026F732 /* JobTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JobTableViewCell.xib; sourceTree = "<group>"; };
 		507B684A2397DA770026F732 /* DetailJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailJobViewController.swift; sourceTree = "<group>"; };
+		50AE2321239F8C0200FC4D87 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		50AE2322239F8C0200FC4D87 /* DescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionTableViewCell.xib; sourceTree = "<group>"; };
+		50AE2325239F973B00FC4D87 /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
+		50AE2326239F973B00FC4D87 /* CompanyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyCell.xib; sourceTree = "<group>"; };
+		50AE2329239F9CE200FC4D87 /* AdressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressCell.swift; sourceTree = "<group>"; };
+		50AE232A239F9CE200FC4D87 /* AdressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdressCell.xib; sourceTree = "<group>"; };
 		50FE4CB6239683EA00CD15F2 /* SearchSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsViewController.swift; sourceTree = "<group>"; };
 		50FE4CDA2396D96A00CD15F2 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +106,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		50AE231E239F7A5500FC4D87 /* DetailJobCells */ = {
+			isa = PBXGroup;
+			children = (
+				50AE2321239F8C0200FC4D87 /* DescriptionTableViewCell.swift */,
+				50AE2322239F8C0200FC4D87 /* DescriptionTableViewCell.xib */,
+				50AE2325239F973B00FC4D87 /* CompanyCell.swift */,
+				50AE2326239F973B00FC4D87 /* CompanyCell.xib */,
+				50AE2329239F9CE200FC4D87 /* AdressCell.swift */,
+				50AE232A239F9CE200FC4D87 /* AdressCell.xib */,
+			);
+			path = DetailJobCells;
+			sourceTree = "<group>";
+		};
 		50FE4CB32396838F00CD15F2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +132,7 @@
 		50FE4CB52396839F00CD15F2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				50AE231E239F7A5500FC4D87 /* DetailJobCells */,
 				507B684623979C550026F732 /* JobTableViewCell.swift */,
 				507B684723979C550026F732 /* JobTableViewCell.xib */,
 				50697F7D2394E8F900364BDB /* Main.storyboard */,
@@ -181,9 +207,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				50697F842394E8FA00364BDB /* LaunchScreen.storyboard in Resources */,
+				50AE2324239F8C0200FC4D87 /* DescriptionTableViewCell.xib in Resources */,
 				50697F812394E8FA00364BDB /* Assets.xcassets in Resources */,
+				50AE2328239F973B00FC4D87 /* CompanyCell.xib in Resources */,
 				50697F7F2394E8F900364BDB /* Main.storyboard in Resources */,
 				507B684923979C550026F732 /* JobTableViewCell.xib in Resources */,
+				50AE232C239F9CE200FC4D87 /* AdressCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,13 +223,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50AE2323239F8C0200FC4D87 /* DescriptionTableViewCell.swift in Sources */,
 				50697F7C2394E8F900364BDB /* SearchViewController.swift in Sources */,
 				50697F8F2395268000364BDB /* Job.swift in Sources */,
 				50697F7A2394E8F900364BDB /* AppDelegate.swift in Sources */,
+				50AE2327239F973B00FC4D87 /* CompanyCell.swift in Sources */,
 				507B684B2397DA770026F732 /* DetailJobViewController.swift in Sources */,
 				507B684823979C550026F732 /* JobTableViewCell.swift in Sources */,
 				50FE4CB7239683EA00CD15F2 /* SearchSettingsViewController.swift in Sources */,
 				50FE4CDB2396D96A00CD15F2 /* NetworkRequest.swift in Sources */,
+				50AE232B239F9CE200FC4D87 /* AdressCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -176,7 +176,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                 
                 if let chidVC = navController.topViewController as? DetailJobViewController {
                     let blogIndex = tableView.indexPathForSelectedRow?.row
-                    chidVC.imageURL = jobs?.items[blogIndex!].employer.logoUrls?.original
+                    //chidVC.imageURL = jobs?.items[blogIndex!].employer.logoUrls?.original
                     
                 }
                 
