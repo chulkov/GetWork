@@ -10,12 +10,22 @@ import UIKit
 
 class DetailJobViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
+    var vacancy = Vacancy(){
+        didSet{
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     @IBOutlet weak var tableView: UITableView!{
         didSet{
             tableView.delegate = self
             tableView.dataSource = self
         }
     }
+    
+    var vacancyId = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +38,21 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
         self.navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 0.9688121676, green: 0.9688346982, blue: 0.9688225389, alpha: 1)
+        
+        
+        
+        
+        NetworkRequest().getVacancy(vacancyId: vacancyId) { (result) in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let vacancy):
+                //print(vacancy)
+                self.vacancy = vacancy
+            }
+        }
+        
+        
         
         
         //        //Restoring border:
@@ -60,19 +85,32 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
         if indexPath.row  == 0 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "HeadCell") as? HeadCell{
                 cell.backgroundColor = #colorLiteral(red: 0.9688121676, green: 0.9688346982, blue: 0.9688225389, alpha: 1)//navigationController?.navigationBar.backgroundColor
+                cell.cityLabel.text = vacancy?.address?.city
+                cell.vacancyNameLabel.text = vacancy?.name
+                cell.neededExpLabel.text = vacancy?.experience.name
+                cell.employmentLabel.text = vacancy?.employment.name
+                cell.scheduleLabel.text = vacancy?.schedule.name
                 return cell
             }
             
         } else if indexPath.row == 1 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "CompanyCell") as? CompanyCell{
+                cell.companyNameLabel.text = vacancy?.employer.name
+                if vacancy?.employer.trusted ?? false {
+                    cell.makeTrusted()
+                }
                 return cell
             }
         } else if indexPath.row == 2 {
+            //TODO: hide this cell if address is nil
             if let cell = tableView.dequeueReusableCell(withIdentifier: "AdressCell") as? AdressCell{
                 return cell
             }
         } else if indexPath.row == 3 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell") as? DescriptionCell{
+                //cell.descriptionLabel.text = vacancy?.vacancyDescription
+                //cell.setDescription(text: vacancy?.vacancyDescription ?? "")
+                cell.descriptionLabel.attributedText = try? NSAttributedString(htmlString: (vacancy?.vacancyDescription)! )
                 return cell
             }
         } else if indexPath.row == 4 {

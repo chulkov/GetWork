@@ -10,6 +10,7 @@ import UIKit
 
 class CompanyCell: UITableViewCell {
 
+    @IBOutlet weak var companyNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +20,9 @@ class CompanyCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    func makeTrusted(){
+        companyNameLabel.text = companyNameLabel.text! + " ✓"
     }
     
 }

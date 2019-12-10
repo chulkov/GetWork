@@ -26,6 +26,7 @@
 		50AE2332239FBB8F00FC4D87 /* DescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50AE2330239FBB8F00FC4D87 /* DescriptionCell.xib */; };
 		50AE2335239FC31D00FC4D87 /* ContactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE2333239FC31D00FC4D87 /* ContactsCell.swift */; };
 		50AE2336239FC31D00FC4D87 /* ContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50AE2334239FC31D00FC4D87 /* ContactsCell.xib */; };
+		50AE2338239FC70900FC4D87 /* Vacancy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE2337239FC70900FC4D87 /* Vacancy.swift */; };
 		50FE4CB7239683EA00CD15F2 /* SearchSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FE4CB6239683EA00CD15F2 /* SearchSettingsViewController.swift */; };
 		50FE4CDB2396D96A00CD15F2 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FE4CDA2396D96A00CD15F2 /* NetworkRequest.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		50AE2330239FBB8F00FC4D87 /* DescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionCell.xib; sourceTree = "<group>"; };
 		50AE2333239FC31D00FC4D87 /* ContactsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCell.swift; sourceTree = "<group>"; };
 		50AE2334239FC31D00FC4D87 /* ContactsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsCell.xib; sourceTree = "<group>"; };
+		50AE2337239FC70900FC4D87 /* Vacancy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vacancy.swift; sourceTree = "<group>"; };
 		50FE4CB6239683EA00CD15F2 /* SearchSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsViewController.swift; sourceTree = "<group>"; };
 		50FE4CDA2396D96A00CD15F2 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				50697F8E2395268000364BDB /* Job.swift */,
+				50AE2337239FC70900FC4D87 /* Vacancy.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				50697F7A2394E8F900364BDB /* AppDelegate.swift in Sources */,
 				50AE2327239F973B00FC4D87 /* CompanyCell.swift in Sources */,
 				507B684B2397DA770026F732 /* DetailJobViewController.swift in Sources */,
+				50AE2338239FC70900FC4D87 /* Vacancy.swift in Sources */,
 				507B684823979C550026F732 /* JobTableViewCell.swift in Sources */,
 				50FE4CB7239683EA00CD15F2 /* SearchSettingsViewController.swift in Sources */,
 				50AE2335239FC31D00FC4D87 /* ContactsCell.swift in Sources */,

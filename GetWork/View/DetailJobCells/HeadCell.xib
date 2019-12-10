@@ -84,6 +84,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cityLabel" destination="wcS-gT-CLm" id="66f-BC-T4F"/>
+                <outlet property="employmentLabel" destination="hBM-rY-oKX" id="7R4-2r-qYs"/>
+                <outlet property="neededExpLabel" destination="1a0-KG-Qyz" id="BA0-1e-yog"/>
+                <outlet property="scheduleLabel" destination="kTI-bQ-c7v" id="r67-GB-Zxj"/>
+                <outlet property="vacancyNameLabel" destination="vIA-Qu-LGD" id="eAg-jh-nMh"/>
             </connections>
             <point key="canvasLocation" x="-313.04347826086956" y="-31.808035714285712"/>
         </tableViewCell>

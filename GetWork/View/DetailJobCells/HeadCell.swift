@@ -11,6 +11,10 @@ import UIKit
 class HeadCell: UITableViewCell {
 
     @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var vacancyNameLabel: UILabel!
+    @IBOutlet weak var neededExpLabel: UILabel!
+    @IBOutlet weak var employmentLabel: UILabel!
+    @IBOutlet weak var scheduleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

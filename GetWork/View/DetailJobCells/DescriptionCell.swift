@@ -10,11 +10,13 @@ import UIKit
 
 class DescriptionCell: UITableViewCell {
 
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel! 
+    @IBOutlet weak var updatedLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        descriptionLabel.attributedText = try? NSAttributedString(htmlString: descriptionLabel.text! )
+       
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -22,6 +24,10 @@ class DescriptionCell: UITableViewCell {
 
        
         // Configure the view for the selected state
+    }
+    
+    func setDescription(text: String){
+        descriptionLabel.attributedText = try? NSAttributedString(htmlString: descriptionLabel.text! )
     }
     
 }
