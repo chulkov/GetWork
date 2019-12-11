@@ -45,10 +45,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.estimatedRowHeight = 68.0
         tableView.rowHeight = UITableView.automaticDimension
         registerTableViewCells()
-
+        
         NetworkRequest().getJobs { (result) in
             switch result {
             case .failure(let error):
@@ -73,9 +74,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                     self.jobs = jobs
                 }
             }
-
+            
         }
-
+        
     }
     
     // MARK: - Table view data source
@@ -128,63 +129,81 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     func beginBatchFetch(text: String, page: Int){
         fetchingMore = true
         
-//        NetworkRequest(text: text, page: page).getJobs(compleation: { [weak self] result in
-//
-//            switch result {
-//            case .failure(let error):
-//                print(error)
-//            case .success(let jobs):
-//                self?.fetchingMore = false
-//                if jobs.isEmpty == false{
-//                    self?.jobs.append(contentsOf: jobs)
-//                    self?.currentPage += 1
-//                }else{
-//                    print("No more jobs for you")
-//
-//                }
-//
-//            }
-//        })
+        //        NetworkRequest(text: text, page: page).getJobs(compleation: { [weak self] result in
+        //
+        //            switch result {
+        //            case .failure(let error):
+        //                print(error)
+        //            case .success(let jobs):
+        //                self?.fetchingMore = false
+        //                if jobs.isEmpty == false{
+        //                    self?.jobs.append(contentsOf: jobs)
+        //                    self?.currentPage += 1
+        //                }else{
+        //                    print("No more jobs for you")
+        //
+        //                }
+        //
+        //            }
+        //        })
         
-//        NetworkRequest().getJobsWithSearch(text: text, page: page) { result in
-//            switch result {
-//            case .failure(let error):
-//                print(error)
-//            case .success(let jobs):
-//                self.fetchingMore = false
-//                if jobs.isEmpty == false{
-//                    self.jobs.append(contentsOf: jobs)
-//                    self.currentPage += 1
-//                }else{
-//                    print("No more jobs for you")
-//
-//                }
-//            }
-//        }
+        //        NetworkRequest().getJobsWithSearch(text: text, page: page) { result in
+        //            switch result {
+        //            case .failure(let error):
+        //                print(error)
+        //            case .success(let jobs):
+        //                self.fetchingMore = false
+        //                if jobs.isEmpty == false{
+        //                    self.jobs.append(contentsOf: jobs)
+        //                    self.currentPage += 1
+        //                }else{
+        //                    print("No more jobs for you")
+        //
+        //                }
+        //            }
+        //        }
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //        let destinationVC = DetailJobViewController()
+        //        if let vacancyId = jobs?.items[indexPath.row].id{
+        //            destinationVC.vacancyId = vacancyId
+        //        }
         performSegue(withIdentifier: "toDetailedJobSegue", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toDetailedJobSegue"  {
-            
-            if let navController = segue.destination as? UINavigationController {
+        //        if segue.identifier == "toDetailedJobSegue"  {
+        //
+        //            if let navController = segue.destination as? UINavigationController {
+        //
+        //                if let chidVC = navController.topViewController as? DetailJobViewController {
+        //                    let blogIndex = tableView.indexPathForSelectedRow?.row
+        //                    if let vacancyId = jobs?.items[blogIndex!].id{
+        //                         chidVC.vacancyId = vacancyId
+        //                    }
+        //
+        //
+        //                }
+        //
+        //            }
+        //
+        //        }
+        
+        if segue.identifier == "toDetailedJobSegue" {
+            if segue.destination.isKind(of: DetailJobViewController.self) {
+                let secondVC = segue.destination as! DetailJobViewController
                 
-                if let chidVC = navController.topViewController as? DetailJobViewController {
-                    let blogIndex = tableView.indexPathForSelectedRow?.row
-                    if let vacancyId = jobs?.items[blogIndex!].id{
-                         chidVC.vacancyId = vacancyId
-                    }
-                   
-                    
+               // let indexPath = sender as! IndexPath
+                 let blogIndex = tableView.indexPathForSelectedRow?.row
+                if let vacancyId = jobs?.items[blogIndex!].id{
+                    secondVC.vacancyId = vacancyId
                 }
-                
+                //secondVC.vacancyId = jobs?.items[indexPath.row].id
             }
-            
         }
     }
     

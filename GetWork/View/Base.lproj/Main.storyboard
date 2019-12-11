@@ -92,7 +92,7 @@
                                             <accessibilityTraits key="traits" selected="YES"/>
                                         </accessibility>
                                         <connections>
-                                            <segue destination="lLE-ky-juS" kind="show" identifier="toDetailedJobSegue" id="djI-Eo-hcN"/>
+                                            <segue destination="fiG-fR-naH" kind="show" identifier="toDetailedJobSegue" id="vHr-Ll-5Fl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -250,6 +250,11 @@
                                 <action selector="goBack:" destination="fiG-fR-naH" id="NJl-v0-Ieu"/>
                             </connections>
                         </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="bookmarks" id="vve-Uo-XUA"/>
+                            <barButtonItem systemItem="action" id="m2y-e0-qQH"/>
+                            <barButtonItem systemItem="refresh" id="hYQ-gk-jrr"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="HHw-FW-ivz" id="GwU-K5-PK3"/>
@@ -257,12 +262,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qx6-me-Zeu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2398.5507246376815" y="1273.6607142857142"/>
+            <point key="canvasLocation" x="1451" y="1272"/>
         </scene>
         <!--Все параметры-->
         <scene sceneID="BAJ-8w-fF0">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="9PQ-Jc-Sif" customClass="SearchSettingsViewController" customModule="GetWork" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9PQ-Jc-Sif" customClass="SearchSettingsViewController" customModule="GetWork" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zw7-Y3-EvP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -292,25 +297,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aMi-Dr-Pvu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-542.02898550724638" y="1034.5982142857142"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="brx-Kj-nYx">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lLE-ky-juS" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="S84-GC-sMA">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="fiG-fR-naH" kind="relationship" relationship="rootViewController" id="aaO-IU-rKI"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lc8-Nx-c0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1489.8550724637682" y="1273.6607142857142"/>
+            <point key="canvasLocation" x="-939" y="1173"/>
         </scene>
     </scenes>
     <resources>

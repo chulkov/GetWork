@@ -30,6 +30,7 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.estimatedRowHeight = 68.0
         tableView.rowHeight = UITableView.automaticDimension
         registerTableViewCells()
@@ -131,7 +132,9 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     @IBAction func goBack(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        //dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+        //navigationController?.popToRootViewController(animated: true)
     }
     
     /*
