@@ -13,6 +13,7 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
     var vacancy = Vacancy(){
         didSet{
             DispatchQueue.main.async {
+                print("reloadData")
                 self.tableView.reloadData()
             }
         }
@@ -42,37 +43,28 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
         
         
         
+       
+
+        //        //Restoring border:
+        //        self.navigationController?.navigationBar.setBackgroundImage(nil, for:.default)
+        //        self.navigationController?.navigationBar.shadowImage = nil
+        //        self.navigationController?.navigationBar.layoutIfNeeded()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         NetworkRequest().getVacancy(vacancyId: vacancyId) { (result) in
             switch result {
             case .failure(let error):
                 print(error)
             case .success(let vacancy):
-                //print(vacancy)
+                print("vacancy")
                 self.vacancy = vacancy
             }
         }
-        
-        
-        
-        
-        //        //Restoring border:
-        //        self.navigationController?.navigationBar.setBackgroundImage(nil, for:.default)
-        //        self.navigationController?.navigationBar.shadowImage = nil
-        //        self.navigationController?.navigationBar.layoutIfNeeded()
-        
-        //        if let url = URL(string: imageURL!){
-        //            DispatchQueue.global().async {
-        //                if let data = try? Data(contentsOf: url){
-        //                    DispatchQueue.main.async {
-        //                        self.logoImage.image = UIImage(data: data)
-        //                    }
-        //                } //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-        //
-        //            }
-        //        }
-        
-        
     }
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -81,45 +73,53 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.row  == 0 {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "HeadCell") as? HeadCell{
-                cell.backgroundColor = #colorLiteral(red: 0.9688121676, green: 0.9688346982, blue: 0.9688225389, alpha: 1)//navigationController?.navigationBar.backgroundColor
-                cell.cityLabel.text = vacancy?.address?.city
-                cell.vacancyNameLabel.text = vacancy?.name
-                cell.neededExpLabel.text = vacancy?.experience.name
-                cell.employmentLabel.text = vacancy?.employment.name
-                cell.scheduleLabel.text = vacancy?.schedule.name
-                return cell
-            }
-            
-        } else if indexPath.row == 1 {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "CompanyCell") as? CompanyCell{
-                cell.companyNameLabel.text = vacancy?.employer.name
-                if vacancy?.employer.trusted ?? false {
-                    cell.makeTrusted()
+        if vacancy != nil{
+            if indexPath.row  == 0 {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "HeadCell") as? HeadCell{
+                    cell.backgroundColor = #colorLiteral(red: 0.9688121676, green: 0.9688346982, blue: 0.9688225389, alpha: 1)//navigationController?.navigationBar.backgroundColor
+                    cell.cityLabel.text = vacancy?.address?.city
+                    cell.vacancyNameLabel.text = vacancy?.name
+                    cell.neededExpLabel.text = vacancy?.experience.name
+                    cell.employmentLabel.text = vacancy?.employment.name
+                    cell.scheduleLabel.text = vacancy?.schedule.name
+                    return cell
                 }
-                return cell
+                
+            } else if indexPath.row == 1 {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "CompanyCell") as? CompanyCell{
+                    cell.companyNameLabel.text = vacancy?.employer.name
+                    if vacancy?.employer.trusted ?? false {
+                        cell.makeTrusted()
+                    }
+                    return cell
+                }
+            } else if indexPath.row == 2 {
+                //TODO: hide this cell if address is nil
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "AdressCell") as? AdressCell{
+                    if let address =  vacancy?.address{
+                        cell.addressLabel.text = address.raw
+                        cell.setMap(lat: address.lat!, long: address.lng!)
+                    }
+                  
+                    return cell
+                }
+            } else if indexPath.row == 3 {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell") as? DescriptionCell{
+                    cell.descriptionLabel.attributedText = try? NSAttributedString(htmlString: (vacancy?.vacancyDescription)! )
+                    return cell
+                }
+            } else if indexPath.row == 4 {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsCell") as? ContactsCell{
+                    cell.nameLabel.text = vacancy?.contacts?.name
+                    cell.emailLabel.text = vacancy?.contacts?.email
+                    return cell
+                }
             }
-        } else if indexPath.row == 2 {
-            //TODO: hide this cell if address is nil
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "AdressCell") as? AdressCell{
-                return cell
-            }
-        } else if indexPath.row == 3 {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell") as? DescriptionCell{
-                //cell.descriptionLabel.text = vacancy?.vacancyDescription
-                //cell.setDescription(text: vacancy?.vacancyDescription ?? "")
-                cell.descriptionLabel.attributedText = try? NSAttributedString(htmlString: (vacancy?.vacancyDescription)! )
-                return cell
-            }
-        } else if indexPath.row == 4 {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsCell") as? ContactsCell{
-                return cell
-            }
+            return UITableViewCell()
+        }else{
+            return UITableViewCell()
         }
         
-        return UITableViewCell()
     }
     
     func registerTableViewCells(){
