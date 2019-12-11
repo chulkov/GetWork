@@ -13,7 +13,7 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
     var vacancy = Vacancy(){
         didSet{
             DispatchQueue.main.async {
-                print("reloadData")
+                //print("reloadData")
                 self.tableView.reloadData()
             }
         }
@@ -59,7 +59,7 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
             case .failure(let error):
                 print(error)
             case .success(let vacancy):
-                print("vacancy")
+                //print("vacancy")
                 self.vacancy = vacancy
             }
         }

@@ -245,15 +245,10 @@
                         <viewLayoutGuide key="safeArea" id="KbN-Yp-DSQ"/>
                     </view>
                     <navigationItem key="navigationItem" id="QJy-9g-Rh2">
-                        <barButtonItem key="leftBarButtonItem" title="◁" id="Yyl-JA-LTY">
-                            <connections>
-                                <action selector="goBack:" destination="fiG-fR-naH" id="NJl-v0-Ieu"/>
-                            </connections>
-                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="bookmarks" id="vve-Uo-XUA"/>
-                            <barButtonItem systemItem="action" id="m2y-e0-qQH"/>
-                            <barButtonItem systemItem="refresh" id="hYQ-gk-jrr"/>
+                            <barButtonItem image="star" id="vve-Uo-XUA"/>
+                            <barButtonItem image="share" id="m2y-e0-qQH"/>
+                            <barButtonItem title="Item" image="eye" id="hYQ-gk-jrr"/>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -301,6 +296,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="eye" width="25.5" height="18"/>
         <image name="settings" width="99" height="83.5"/>
+        <image name="share" width="20" height="25.5"/>
+        <image name="star" width="25.5" height="25.5"/>
     </resources>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
