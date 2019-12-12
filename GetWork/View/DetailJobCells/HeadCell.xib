@@ -12,27 +12,27 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="183" id="KGk-i7-Jjw" customClass="HeadCell" customModule="GetWork" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="183"/>
+        <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="211" id="KGk-i7-Jjw" customClass="HeadCell" customModule="GetWork" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="211"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="182.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="210.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Челябинск" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcS-gT-CLm">
-                        <rect key="frame" x="16" y="16" width="81" height="18"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                        <rect key="frame" x="16" y="16" width="71.5" height="24.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IOS разработчик" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIA-Qu-LGD">
-                        <rect key="frame" x="16" y="48" width="174.5" height="25.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="IOS разработчик" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIA-Qu-LGD">
+                        <rect key="frame" x="16" y="54.5" width="284" height="25.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gVm-Rf-NIc">
-                        <rect key="frame" x="16" y="98" width="241" height="44"/>
+                        <rect key="frame" x="16" y="136.5" width="241" height="44"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="czb-H6-IRg">
                                 <rect key="frame" x="0.0" y="0.0" width="241" height="17"/>
@@ -70,15 +70,25 @@
                             </stackView>
                         </subviews>
                     </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="25000 - 50000 Р" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5FO-KN-EhC">
+                        <rect key="frame" x="16" y="98" width="284" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="wcS-gT-CLm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="5Z7-Dh-K9r"/>
+                    <constraint firstItem="5FO-KN-EhC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="5ey-1b-dko"/>
                     <constraint firstItem="vIA-Qu-LGD" firstAttribute="top" secondItem="wcS-gT-CLm" secondAttribute="bottom" constant="14" id="Cwq-Ws-Om2"/>
-                    <constraint firstAttribute="bottom" secondItem="gVm-Rf-NIc" secondAttribute="bottom" constant="40.5" id="K3N-Mo-BZE"/>
+                    <constraint firstAttribute="trailing" secondItem="vIA-Qu-LGD" secondAttribute="trailing" constant="20" id="PcX-Ou-gv7"/>
                     <constraint firstItem="vIA-Qu-LGD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Q8F-5q-Zhg"/>
-                    <constraint firstItem="gVm-Rf-NIc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="QSE-fl-9Sf"/>
+                    <constraint firstItem="gVm-Rf-NIc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Vli-0i-7KM"/>
                     <constraint firstItem="wcS-gT-CLm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="aQ4-Fs-URC"/>
-                    <constraint firstItem="gVm-Rf-NIc" firstAttribute="top" secondItem="vIA-Qu-LGD" secondAttribute="bottom" constant="24.5" id="xan-9R-WDL"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="5FO-KN-EhC" secondAttribute="trailing" constant="4" id="bXU-rr-euD"/>
+                    <constraint firstItem="5FO-KN-EhC" firstAttribute="top" secondItem="vIA-Qu-LGD" secondAttribute="bottom" constant="18" id="efx-sP-Bvh"/>
+                    <constraint firstItem="gVm-Rf-NIc" firstAttribute="top" secondItem="5FO-KN-EhC" secondAttribute="bottom" constant="18" id="fcz-El-50p"/>
+                    <constraint firstAttribute="bottom" secondItem="gVm-Rf-NIc" secondAttribute="bottom" constant="30" id="z6S-LD-qOE"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -86,10 +96,11 @@
                 <outlet property="cityLabel" destination="wcS-gT-CLm" id="66f-BC-T4F"/>
                 <outlet property="employmentLabel" destination="hBM-rY-oKX" id="7R4-2r-qYs"/>
                 <outlet property="neededExpLabel" destination="1a0-KG-Qyz" id="BA0-1e-yog"/>
+                <outlet property="salaryLabel" destination="5FO-KN-EhC" id="kBB-nI-G4R"/>
                 <outlet property="scheduleLabel" destination="kTI-bQ-c7v" id="r67-GB-Zxj"/>
                 <outlet property="vacancyNameLabel" destination="vIA-Qu-LGD" id="eAg-jh-nMh"/>
             </connections>
-            <point key="canvasLocation" x="-313.04347826086956" y="-31.808035714285712"/>
+            <point key="canvasLocation" x="-313.04347826086956" y="-22.433035714285712"/>
         </tableViewCell>
     </objects>
 </document>

@@ -17,10 +17,13 @@ class JobTableViewCell: UITableViewCell {
     @IBOutlet weak private var dateLabel: UILabel!
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var salaryLabel: UILabel!
     
+    @IBOutlet weak var cityLeadingConstraint: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
     
     func setDescription(textDescription: String, trim number: Int){
@@ -40,13 +43,15 @@ class JobTableViewCell: UITableViewCell {
         dateFormatter.dateFormat = "yyyy-mm-dd HH:mm:ss+zzzz"
         //dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss +zzzz"
         
-        dateFormatter.locale = Locale.init(identifier: "en_GB")
+        dateFormatter.locale = Locale.init(identifier: "ru_RU")
         
         let dateObj = dateFormatter.date(from: dateString)
         
-        dateFormatter.dateFormat = "MMMM dd"
+        dateFormatter.dateFormat = "dd MMMM"
+        if let date = dateObj{
+            dateLabel.text = dateFormatter.string(from: date)
+        }
         
-        dateLabel.text = dateFormatter.string(from: dateObj!)
         //print("Dateobj: \(dateFormatter.string(from: dateObj!))")
     }
     

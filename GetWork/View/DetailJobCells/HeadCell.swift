@@ -15,6 +15,7 @@ class HeadCell: UITableViewCell {
     @IBOutlet weak var neededExpLabel: UILabel!
     @IBOutlet weak var employmentLabel: UILabel!
     @IBOutlet weak var scheduleLabel: UILabel!
+    @IBOutlet weak var salaryLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

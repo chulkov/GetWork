@@ -45,7 +45,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //navigationController?.hidesBarsOnSwipe = true
         tableView.estimatedRowHeight = 68.0
         tableView.rowHeight = UITableView.automaticDimension
         registerTableViewCells()
@@ -60,6 +60,25 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         }
         
     }
+//    //MARK: To hide navigation bar on scroll
+//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//
+//        if(velocity.y>0) {
+//            //Code will work without the animation block.I am using animation block incase if you want to set any delay to it.
+//            UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
+//                self.navigationController?.setNavigationBarHidden(true, animated: true)
+//                self.navigationController?.setToolbarHidden(true, animated: true)
+//                //print("Hide")
+//            }, completion: nil)
+//
+//        } else {
+//            UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
+//                self.navigationController?.setNavigationBarHidden(false, animated: true)
+//                self.navigationController?.setToolbarHidden(false, animated: true)
+//                //print("Unhide")
+//            }, completion: nil)
+//        }
+//    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("searchBarTextDidEndEditing     -     \(searchBar.text ?? "empty")")
@@ -92,7 +111,19 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
             cell.titleLabel.text = jobs?.items[indexPath.row].name
             cell.companyLabel.text = jobs?.items[indexPath.row].employer.name
             cell.cityLabel.text = jobs?.items[indexPath.row].address?.city
+            if let salary = jobs?.items[indexPath.row].salary{
+                cell.salaryLabel.text = Helper.prepareSalaryLabel(from: salary.from, to: salary.to, currency: salary.currency, gross: salary.gross!)
+                cell.cityLeadingConstraint.constant = 10
+            }else{
+                cell.cityLeadingConstraint.constant = 0
+            }
+            //TODO: Что то не то ^^^
+            
             cell.descriptionLabel.text = jobs?.items[indexPath.row].snippet.requirement
+            if let responsibility = jobs?.items[indexPath.row].snippet.responsibility{
+                cell.descriptionLabel.text?.append(responsibility)
+            }
+            
             cell.setDate(date: jobs?.items[indexPath.row].publishedAt ?? "2019-11-25T09:59:39+0300")
             return cell
         }
@@ -166,47 +197,39 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        //        let destinationVC = DetailJobViewController()
-        //        if let vacancyId = jobs?.items[indexPath.row].id{
-        //            destinationVC.vacancyId = vacancyId
-        //        }
         performSegue(withIdentifier: "toDetailedJobSegue", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //        if segue.identifier == "toDetailedJobSegue"  {
-        //
-        //            if let navController = segue.destination as? UINavigationController {
-        //
-        //                if let chidVC = navController.topViewController as? DetailJobViewController {
-        //                    let blogIndex = tableView.indexPathForSelectedRow?.row
-        //                    if let vacancyId = jobs?.items[blogIndex!].id{
-        //                         chidVC.vacancyId = vacancyId
-        //                    }
-        //
-        //
-        //                }
-        //
-        //            }
-        //
-        //        }
-        
         if segue.identifier == "toDetailedJobSegue" {
             if segue.destination.isKind(of: DetailJobViewController.self) {
                 let secondVC = segue.destination as! DetailJobViewController
-                
-               // let indexPath = sender as! IndexPath
-                 let blogIndex = tableView.indexPathForSelectedRow?.row
+                let blogIndex = tableView.indexPathForSelectedRow?.row
                 if let vacancyId = jobs?.items[blogIndex!].id{
                     secondVC.vacancyId = vacancyId
                 }
-                //secondVC.vacancyId = jobs?.items[indexPath.row].id
             }
         }
     }
     
-    
+//    func prepareSalaryLabel(from: Int?, to: Int?, currency: String?, gross: Bool) -> String{
+//
+//        var resultString = ""
+//
+//
+//        if let fromSalary = from, let toSalary = to{
+//            resultString = "\(fromSalary) - \(toSalary) \(currency!)"
+//            return resultString
+//        }else{
+//            if let fromSalary = from{
+//                resultString = "от \(fromSalary)"
+//                return resultString
+//            }else{
+//                return ""
+//            }
+//        }
+//
+//    }
 }
 

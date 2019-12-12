@@ -27,7 +27,7 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     var vacancyId = String()
-    
+    var hideCell = false
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,8 +44,8 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
         
         
         
-       
-
+        
+        
         //        //Restoring border:
         //        self.navigationController?.navigationBar.setBackgroundImage(nil, for:.default)
         //        self.navigationController?.navigationBar.shadowImage = nil
@@ -67,7 +67,11 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        if indexPath.row == 2, hideCell{
+            return 0.0
+        } else {
+            return UITableView.automaticDimension
+        }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
@@ -83,6 +87,9 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
                     cell.neededExpLabel.text = vacancy?.experience.name
                     cell.employmentLabel.text = vacancy?.employment.name
                     cell.scheduleLabel.text = vacancy?.schedule.name
+                    if let salary = vacancy?.salary{
+                        cell.salaryLabel.text =  Helper.prepareSalaryLabel(from: salary.from, to: salary.to, currency: salary.currency, gross: salary.gross!)
+                    }
                     return cell
                 }
                 
@@ -100,8 +107,10 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
                     if let address =  vacancy?.address{
                         cell.addressLabel.text = address.raw
                         cell.setMap(lat: address.lat!, long: address.lng!)
+                    }else{
+                        hideCell = true
                     }
-                  
+                    
                     return cell
                 }
             } else if indexPath.row == 3 {
@@ -122,6 +131,7 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
         }
         
     }
+    
     
     func registerTableViewCells(){
         self.tableView.register(UINib(nibName: "HeadCell", bundle: nil), forCellReuseIdentifier: "HeadCell")

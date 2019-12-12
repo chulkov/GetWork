@@ -19,14 +19,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="71.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="→" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7z-Pr-3gI">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="→" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7z-Pr-3gI">
                         <rect key="frame" x="289" y="25.5" width="15" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfu-dY-S0t">
-                        <rect key="frame" x="16" y="25.5" width="105" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfu-dY-S0t">
+                        <rect key="frame" x="16" y="25.5" width="253" height="20.5"/>
                         <attributedString key="attributedText">
                             <fragment content="IDScan.net ">
                                 <attributes>
@@ -51,6 +51,7 @@
                     <constraint firstItem="I7z-Pr-3gI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Zfu-dY-S0t" secondAttribute="trailing" constant="8" symbolic="YES" id="Fjy-oB-5Dy"/>
                     <constraint firstAttribute="trailing" secondItem="I7z-Pr-3gI" secondAttribute="trailing" constant="16" id="I5D-sw-QNB"/>
                     <constraint firstItem="Zfu-dY-S0t" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25.5" id="U6r-w8-eaW"/>
+                    <constraint firstItem="I7z-Pr-3gI" firstAttribute="leading" secondItem="Zfu-dY-S0t" secondAttribute="trailing" constant="20" id="gZG-kc-9Q0"/>
                     <constraint firstItem="Zfu-dY-S0t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="hgB-nD-y2S"/>
                     <constraint firstItem="I7z-Pr-3gI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kSz-Ey-ElB"/>
                 </constraints>

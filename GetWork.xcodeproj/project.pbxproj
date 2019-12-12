@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5009AC4423A23E0E0039A281 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5009AC4323A23E0E0039A281 /* Helper.swift */; };
+		501D188423A1199D00BB739E /* NSAttributedString+htmlDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501D188323A1199D00BB739E /* NSAttributedString+htmlDecode.swift */; };
 		50697F7A2394E8F900364BDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50697F792394E8F900364BDB /* AppDelegate.swift */; };
 		50697F7C2394E8F900364BDB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50697F7B2394E8F900364BDB /* SearchViewController.swift */; };
 		50697F7F2394E8F900364BDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50697F7D2394E8F900364BDB /* Main.storyboard */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5009AC4323A23E0E0039A281 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		501D188323A1199D00BB739E /* NSAttributedString+htmlDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+htmlDecode.swift"; sourceTree = "<group>"; };
 		50697F762394E8F900364BDB /* GetWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50697F792394E8F900364BDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50697F7B2394E8F900364BDB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		501D188223A1194700BB739E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				501D188323A1199D00BB739E /* NSAttributedString+htmlDecode.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		50697F6D2394E8F800364BDB = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +100,7 @@
 		50697F782394E8F900364BDB /* GetWork */ = {
 			isa = PBXGroup;
 			children = (
+				501D188223A1194700BB739E /* Extensions */,
 				50FE4CB32396838F00CD15F2 /* Controller */,
 				50FE4CB82396857C00CD15F2 /* Networking */,
 				50FE4CB52396839F00CD15F2 /* View */,
@@ -104,6 +117,7 @@
 			children = (
 				50697F792394E8F900364BDB /* AppDelegate.swift */,
 				50697F822394E8FA00364BDB /* LaunchScreen.storyboard */,
+				5009AC4323A23E0E0039A281 /* Helper.swift */,
 			);
 			path = "Supporting FIles";
 			sourceTree = "<group>";
@@ -242,6 +256,7 @@
 			files = (
 				50AE2323239F8C0200FC4D87 /* HeadCell.swift in Sources */,
 				50697F7C2394E8F900364BDB /* SearchViewController.swift in Sources */,
+				5009AC4423A23E0E0039A281 /* Helper.swift in Sources */,
 				50697F8F2395268000364BDB /* Job.swift in Sources */,
 				50697F7A2394E8F900364BDB /* AppDelegate.swift in Sources */,
 				50AE2327239F973B00FC4D87 /* CompanyCell.swift in Sources */,
@@ -250,6 +265,7 @@
 				507B684823979C550026F732 /* JobTableViewCell.swift in Sources */,
 				50FE4CB7239683EA00CD15F2 /* SearchSettingsViewController.swift in Sources */,
 				50AE2335239FC31D00FC4D87 /* ContactsCell.swift in Sources */,
+				501D188423A1199D00BB739E /* NSAttributedString+htmlDecode.swift in Sources */,
 				50FE4CDB2396D96A00CD15F2 /* NetworkRequest.swift in Sources */,
 				50AE2331239FBB8F00FC4D87 /* DescriptionCell.swift in Sources */,
 				50AE232B239F9CE200FC4D87 /* AdressCell.swift in Sources */,
