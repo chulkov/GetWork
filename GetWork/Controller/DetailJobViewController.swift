@@ -15,6 +15,9 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
             DispatchQueue.main.async {
                 //print("reloadData")
                 self.tableView.reloadData()
+                self.indicator.stopAnimating()
+                self.indicator.hidesWhenStopped = true
+                self.tableView.isHidden = false
             }
         }
     }
@@ -28,6 +31,9 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
     
     var vacancyId = String()
     var hideCell = false
+    var indicator = UIActivityIndicatorView()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,6 +52,8 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
         
         
         
+        
+        
         //        //Restoring border:
         //        self.navigationController?.navigationBar.setBackgroundImage(nil, for:.default)
         //        self.navigationController?.navigationBar.shadowImage = nil
@@ -54,6 +62,10 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        activityIndicator()
+        indicator.startAnimating()
+        //indicator.backgroundColor = .g
+        tableView.isHidden = true
         NetworkRequest().getVacancy(vacancyId: vacancyId) { (result) in
             switch result {
             case .failure(let error):
@@ -116,6 +128,7 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
             } else if indexPath.row == 3 {
                 if let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell") as? DescriptionCell{
                     cell.descriptionLabel.attributedText = try? NSAttributedString(htmlString: (vacancy?.vacancyDescription)! )
+                    
                     return cell
                 }
             } else if indexPath.row == 4 {
@@ -141,20 +154,19 @@ class DetailJobViewController: UIViewController, UITableViewDataSource, UITableV
         self.tableView.register(UINib(nibName: "ContactsCell", bundle: nil), forCellReuseIdentifier: "ContactsCell")
     }
     
-    @IBAction func goBack(_ sender: UIBarButtonItem) {
-        //dismiss(animated: true, completion: nil)
-        self.navigationController?.popViewController(animated: true)
-        //navigationController?.popToRootViewController(animated: true)
+//    @IBAction func goBack(_ sender: UIBarButtonItem) {
+//        //dismiss(animated: true, completion: nil)
+//        self.navigationController?.popViewController(animated: true)
+//        //navigationController?.popToRootViewController(animated: true)
+//    }
+//
+    func activityIndicator() {
+        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        indicator.style = UIActivityIndicatorView.Style.gray
+        //indicator.color = .red
+        indicator.center = self.view.center
+        self.view.addSubview(indicator)
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
 }
