@@ -60,6 +60,12 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         }
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = false
+    }
 //    //MARK: To hide navigation bar on scroll
 //    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 //
@@ -109,7 +115,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "JobTableViewCell") as? JobTableViewCell{
             cell.titleLabel.text = jobs?.items[indexPath.row].name
-            cell.companyLabel.text = jobs?.items[indexPath.row].employer.name
+            cell.companyLabel.text = jobs?.items[indexPath.row].employer?.name
             cell.cityLabel.text = jobs?.items[indexPath.row].address?.city
             if let salary = jobs?.items[indexPath.row].salary{
                 cell.salaryLabel.text = Helper.prepareSalaryLabel(from: salary.from, to: salary.to, currency: salary.currency, gross: salary.gross!)
@@ -212,24 +218,5 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
             }
         }
     }
-    
-//    func prepareSalaryLabel(from: Int?, to: Int?, currency: String?, gross: Bool) -> String{
-//
-//        var resultString = ""
-//
-//
-//        if let fromSalary = from, let toSalary = to{
-//            resultString = "\(fromSalary) - \(toSalary) \(currency!)"
-//            return resultString
-//        }else{
-//            if let fromSalary = from{
-//                resultString = "от \(fromSalary)"
-//                return resultString
-//            }else{
-//                return ""
-//            }
-//        }
-//
-//    }
 }
 

@@ -41,7 +41,7 @@ struct Item: Codable {
     let type: TypeClass
     let address: Address?
 //    let responseURL, sortPointDistance: JSONNull?
-    let employer: Employer
+    let employer: Employer?
     let publishedAt: String
     let createdAt: String
     let archived: Bool
@@ -114,7 +114,7 @@ struct Area: Codable {
 
 // MARK: - Contacts
 struct Contacts: Codable {
-    let name, email: String
+    let name, email: String?
     let phones: [Phone]
 }
 
@@ -132,11 +132,11 @@ struct TypeClass: Codable {
 
 // MARK: - Employer
 struct Employer: Codable {
-    let id, name: String
-    let url, alternateURL: String
+    let id, name: String?
+    let url, alternateURL: String?
     let logoUrls: LogoUrls?
-    let vacanciesURL: String
-    let trusted: Bool
+    let vacanciesURL: String?
+    let trusted: Bool?
     
     enum CodingKeys: String, CodingKey {
         case id, name, url

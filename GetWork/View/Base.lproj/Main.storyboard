@@ -64,7 +64,7 @@
         <!--Search-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Search" id="BYZ-38-t0r" customClass="SearchViewController" customModule="GetWork" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Search" title="Search" id="BYZ-38-t0r" customClass="SearchViewController" customModule="GetWork" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -262,7 +262,7 @@
         <!--Все параметры-->
         <scene sceneID="tJZ-dc-Uu8">
             <objects>
-                <tableViewController title="Все параметры" hidesBottomBarWhenPushed="YES" id="0Ug-NP-T3i" sceneMemberID="viewController">
+                <tableViewController title="Все параметры" hidesBottomBarWhenPushed="YES" id="0Ug-NP-T3i" customClass="SearchSettingsViewController" customModule="GetWork" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4X1-Y4-bUt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -594,8 +594,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Без вакансий агенств" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8vU-xq-NPI">
-                                                    <rect key="frame" x="20" y="12" width="174" height="20.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Сортировка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8vU-xq-NPI">
+                                                    <rect key="frame" x="20" y="12" width="96.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -620,6 +620,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="llg-3o-SeW">
                                                     <rect key="frame" x="330" y="6" width="51" height="31.5"/>
+                                                    <connections>
+                                                        <action selector="switchChanged:" destination="0Ug-NP-T3i" eventType="valueChanged" id="tcL-gb-jeH"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Без вакасний агенств" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdC-IP-2IX">
                                                     <rect key="frame" x="20" y="0.0" width="290" height="43.5"/>
@@ -646,8 +649,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rMG-6e-JXG">
+                                                <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rMG-6e-JXG">
                                                     <rect key="frame" x="330" y="6" width="51" height="31.5"/>
+                                                    <connections>
+                                                        <action selector="switchChanged:" destination="0Ug-NP-T3i" eventType="valueChanged" id="RCa-3D-uFZ"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Только доступные для людей с инвалидностью" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLs-AL-N3X">
                                                     <rect key="frame" x="20" y="0.0" width="290" height="43.5"/>
@@ -674,8 +680,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YQQ-CL-CRJ">
+                                                <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YQQ-CL-CRJ">
                                                     <rect key="frame" x="330" y="6" width="51" height="31.5"/>
+                                                    <connections>
+                                                        <action selector="switchChanged:" destination="0Ug-NP-T3i" eventType="valueChanged" id="rJ0-G1-M0q"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Только с указанной зарплатой" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rK6-md-gNn">
                                                     <rect key="frame" x="20" y="0.0" width="290" height="43.5"/>
@@ -702,8 +711,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ix3-xU-wTr">
+                                                <switch opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ix3-xU-wTr">
                                                     <rect key="frame" x="330" y="6" width="51" height="31.5"/>
+                                                    <connections>
+                                                        <action selector="switchChanged:" destination="0Ug-NP-T3i" eventType="valueChanged" id="CW3-Df-yoa"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDO-kL-XxY">
                                                     <rect key="frame" x="20" y="0.0" width="290" height="43.5"/>
@@ -731,10 +743,36 @@
                             <outlet property="delegate" destination="0Ug-NP-T3i" id="i2b-P4-PXU"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="companyTextField" destination="1cz-kT-iIx" id="tcL-if-m5T"/>
+                        <outlet property="forDisablesFlag" destination="rMG-6e-JXG" id="uvw-jv-3k2"/>
+                        <outlet property="forTeensFlag" destination="Ix3-xU-wTr" id="6sI-h0-LIZ"/>
+                        <outlet property="noAgencyFlag" destination="llg-3o-SeW" id="8gZ-hq-G5y"/>
+                        <outlet property="regionTextField" destination="oht-d0-KL4" id="ovP-L0-6CY"/>
+                        <outlet property="salaryTextField" destination="Bar-bp-kUE" id="acn-2z-QGg"/>
+                        <outlet property="showSalaryFlag" destination="YQQ-CL-CRJ" id="zFx-51-AzW"/>
+                        <outlet property="vacancyTextField" destination="ZkK-St-zHD" id="V9O-gD-11c"/>
+                        <segue destination="t8m-RX-CYd" kind="show" identifier="showResult" id="ian-0e-Ic8"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UOy-lP-apT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1450.7246376811595" y="576.5625"/>
+            <point key="canvasLocation" x="1412" y="565"/>
+        </scene>
+        <!--Все вакансии-->
+        <scene sceneID="GbA-I5-gjD">
+            <objects>
+                <viewController title="Все вакансии" id="t8m-RX-CYd" customClass="FilterResultViewController" customModule="GetWork" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Bk-sf-ZuF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="3Dz-IJ-1VW"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VEA-p2-dkV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2409" y="575"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UyD-SH-7Fv">

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5009AC4423A23E0E0039A281 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5009AC4323A23E0E0039A281 /* Helper.swift */; };
 		501D188423A1199D00BB739E /* NSAttributedString+htmlDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501D188323A1199D00BB739E /* NSAttributedString+htmlDecode.swift */; };
+		50345FB323A7A7850006E228 /* FilterResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50345FB223A7A7850006E228 /* FilterResultViewController.swift */; };
 		50697F7A2394E8F900364BDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50697F792394E8F900364BDB /* AppDelegate.swift */; };
 		50697F7C2394E8F900364BDB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50697F7B2394E8F900364BDB /* SearchViewController.swift */; };
 		50697F7F2394E8F900364BDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50697F7D2394E8F900364BDB /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		5009AC4323A23E0E0039A281 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		501D188323A1199D00BB739E /* NSAttributedString+htmlDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+htmlDecode.swift"; sourceTree = "<group>"; };
+		50345FB223A7A7850006E228 /* FilterResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultViewController.swift; sourceTree = "<group>"; };
 		50697F762394E8F900364BDB /* GetWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50697F792394E8F900364BDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50697F7B2394E8F900364BDB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				50697F7B2394E8F900364BDB /* SearchViewController.swift */,
 				50FE4CB6239683EA00CD15F2 /* SearchSettingsViewController.swift */,
 				507B684A2397DA770026F732 /* DetailJobViewController.swift */,
+				50345FB223A7A7850006E228 /* FilterResultViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				501D188423A1199D00BB739E /* NSAttributedString+htmlDecode.swift in Sources */,
 				50FE4CDB2396D96A00CD15F2 /* NetworkRequest.swift in Sources */,
 				50AE2331239FBB8F00FC4D87 /* DescriptionCell.swift in Sources */,
+				50345FB323A7A7850006E228 /* FilterResultViewController.swift in Sources */,
 				50AE232B239F9CE200FC4D87 /* AdressCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
