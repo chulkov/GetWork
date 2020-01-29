@@ -70,6 +70,43 @@ class SearchSettingsViewController: UITableViewController {
         print(forTeensFlag.isOn)
         
     }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0{
+            return 15
+        }else{
+            return 50.0
+        }
+    }
+    
+//    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+//        (view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+//        (view as! UITableViewHeaderFooterView).textLabel?.textColor = UIColor.white
+//
+//    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UILabel(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.width, height: 50)))
+        headerView.backgroundColor = #colorLiteral(red: 0.9495434077, green: 0.9495434077, blue: 0.9495434077, alpha: 0.6923961901)
+        let label = UILabel(frame: CGRect(x: 15, y: 20, width: self.view.frame.width, height: 30))
+        
+        switch section{
+        case 1:
+            label.text = "ПРОФЕССИОНАЛЬНАЯ ОБЛАСТЬ"
+        case 2:
+            label.text = "ОТРАСЛЬ КОМПАНИИ"
+        case 3:
+            label.text = "ТРЕБОВАНИЯ"
+        case 4:
+            label.text = "ПОКАЗЫВАТЬ"
+        default:
+            label.text = ""
+        }
+        //label.text = "Some Text"
+        label.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        headerView.addSubview(label)
+        return headerView
+    }
     /*
     // MARK: - Navigation
 
